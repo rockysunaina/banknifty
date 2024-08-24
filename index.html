@@ -3,10 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download BankNifty Data</title>
+    <title>Auto Download BankNifty Data</title>
+    <script>
+        window.onload = function() {
+            window.location.href = "fetch_data.php";
+        };
+    </script>
 </head>
 <body>
-    <h1>Download BankNifty Data</h1>
-    <a href="fetch_data.php" download="banknifty_data.zip">Click here to download the latest BankNifty data</a>
+    <h1>Fetching and Downloading BankNifty Data...</h1>
+    <p>The download should start automatically.</p>
 </body>
 </html>
