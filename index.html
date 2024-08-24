@@ -6,8 +6,26 @@
     <title>Auto Download BankNifty Data</title>
     <script>
         window.onload = function() {
-            window.location.href = "fetch_data.php";
+            fetchBankNiftyData();
         };
+
+        function fetchBankNiftyData() {
+            fetch('https://your-python-script-server.com/fetch_banknifty_data')
+                .then(response => response.json())
+                .then(data => {
+                    const dataStr = JSON.stringify(data, null, 4);
+                    const blob = new Blob([dataStr], { type: 'application/json' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = url;
+                    a.download = 'banknifty_data.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
     </script>
 </head>
 <body>
